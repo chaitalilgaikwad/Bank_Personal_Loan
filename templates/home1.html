@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <style>
+        body {
+            background-image: url('/static/images/bankloan.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;  /* Set text color to white for better visibility on the image */
+        }
+        form {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);  /* Add a semi-transparent white background to the form */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        /* Style for bold column names */
+        label {
+            font-weight: bold;
+        }
+    </style>
+
+
+</head>
+<body>
+    <h2 style="text-align: center;">Bank Personal Loan Prediction</h2>
+
+    <!-- Form for input values -->
+    <form action="/predicted_bank_loan" method="post" style="text-align: center;">
+    <!-- <form id="loanForm"> -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="experience">Experience:</label>
+        <input type="number" id="experience" name="experience" required>
+
+        <label for="income">Income:</label>
+        <input type="number" id="income" name="income" required>
+
+        <label for="family">Family:</label>
+        <input type="number" id="family" name="family" required>
+
+        <label for="ccavg">CCAvg:</label>
+        <input type="number" id="ccavg" name="ccavg" required>
+
+        <label for="education">Education:</label>
+        <select id="education" name="education" required>
+            <option value="1">Undergrad</option>
+            <option value="2">Graduate</option>
+            <option value="3">Advanced/Professional</option>
+        </select>
+
+        <label for="mortgage">Mortgage:</label>
+        <input type="number" id="mortgage" name="mortgage" required>
+
+        <label for="securitiesAccount">Securities Account:</label>
+        <select id="securitiesAccount" name="securitiesAccount" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label for="cdAccount">CD Account:</label>
+        <select id="cdAccount" name="cdAccount" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label for="online">Online:</label>
+        <select id="online" name="online" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label for="creditCard">Credit Card:</label>
+        <select id="creditCard" name="creditCard" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <button type="button" onclick="predictLoan()">Predict Loan Approval</button>
+    </form>
+
+    <h3 id="predictionResult"></h3>
+    <!-- Display predicted Loan Approval -->
+    {% if prediction_text %}
+        <h3 style="text-align: center;">Predicted Loan Approval: {{prediction_text}}</h3>
+    {% endif %}
+
+    <!-- <script>
+        function predictLoan() {
+            var inputData = {
+                "Age": parseInt(document.getElementById("Age").value),
+                "Experience": parseInt(document.getElementById("Experience").value),
+                "Income": parseInt(document.getElementById("Income").value),
+                "Family": parseInt(document.getElementById("Family").value),
+                "CCAvg": parseFloat(document.getElementById("CCAvg").value),
+                "Education": parseInt(document.getElementById("Education").value),
+                "Mortgage": parseInt(document.getElementById("Mortgage").value),
+                "Securities_Account": parseInt(document.getElementById("Securities_Account").value),
+                "CD_Account": parseInt(document.getElementById("CD_Account").value),
+                "Online": parseInt(document.getElementById("Online").value),
+                "CreditCard": parseInt(document.getElementById("CreditCard").value),
+            };
+
+            fetch('/predicted_bank_loan', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(inputData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("predictionResult").innerText = "Predicted Loan Approval: " + data.status_class;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script> -->
+</body>
+</html>

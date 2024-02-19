@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Personal Loan Prediction</title>
+
+    <style>
+        body {
+            background-image: url('/static/images/bankloan.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #710404;  /* Set text color to black */
+        }
+
+        /* Additional styling for the form */
+        form {
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.2);  /* Semi-transparent white background for the form */
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);  /* Adjusted box shadow */
+            text-align: center;
+            
+            /* Set specific width and height */
+            width: 300px;
+            height: auto; /* You can set a specific height if needed */
+            margin: 0 auto; /* Center the form horizontally */
+        }
+
+        /* Style for bold column names */
+        label {
+            font-weight: bold;
+            display: block; /* Display each label on a new line */
+            margin-bottom: 5px; /* Add space below each label */
+        }
+
+        /* Style for form input elements */
+        input, select {
+            width: 100%; /* Make input elements fill the width of the form */
+            padding: 5px; /* Add padding to input elements for better appearance */
+            margin-bottom: 10px; /* Add space below each input element */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+
+        /* Style for the submit button */
+        button {
+            width: 100%; /* Make the button fill the width of the form */
+            padding: 10px;
+            background-color: #4CAF50; /* Green background color */
+            color: white; /* White text color */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add border-radius for rounded corners */
+            cursor: pointer; /* Add cursor pointer on hover */
+
+
+         
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center; font-size: 50px ;color: #b6d4f3;">Bank Personal Loan Prediction</h2>
+
+    <!-- Form for input values -->
+    <form action="/predicted_bank_loan" method="POST">
+        <label for="Age"> <strong> Age: </strong> </label>
+        <input type="text" id="Age" name="Age" required><br>
+
+        <label for="Experience"> <strong> Experience: </strong> </label>
+        <input type="text" id="Experience" name="Experience" required><br>
+
+        <label for="Income"> <strong> Income: </strong> </label>
+        <input type="text" id="Income" name="Income" required><br>
+
+        <label for="Family"> <strong>Family: </strong> </label>
+        <input type="text" id="Family" name="Family" required><br>
+
+        <label for="CCAvg"> <strong>CCAvg:</strong> </label>
+        <input type="text" id="CCAvg" name="CCAvg" required><br>
+
+        <label for="Education"> <strong>Education:</strong> </label>
+        <input type="text" id="Education" name="Education" required><br>
+
+        <label for="Mortgage"> <strong>Mortgage:</strong> </label>
+        <input type="text" id="Mortgage" name="Mortgage" required><br>
+
+        <label for="Securities_Account">Securities_Account:</label>
+        <select id="Securities_Account" name="Securities_Account" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="CD_Account">CD_Account:</label>
+        <select id="CD_Account" name="CD_Account" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="Online">Online:</label>
+        <select id="Online" name="Online" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <label for="CreditCard">Credit Card:</label>
+        <select id="CreditCard" name="CreditCard" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select><br>
+
+        <button type="submit">Predict</button>
+    </form>
+    
+    <!-- Display predicted Loan Approval -->
+    {% if prediction_text %}
+        <h3 style="text-align: center; font-size: 40px ;color: #7a2466;">Predicted Loan Approval: {{prediction_text}}</h3>
+
+        <!-- <h3 style="text-align: center;">Predicted Loan Approval: {{prediction_text}}</h3> -->
+    {% endif %}
+
+</body>
+</html>

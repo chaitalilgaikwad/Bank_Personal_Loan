@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Personal Loan Prediction</title>
+
+    <style>
+        body {
+            background-image: url('/static/images/bankloan.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;  /* Set text color to white for better visibility on the image */
+        }
+
+        /* Additional styling for the form */
+        form {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);  /* Add a semi-transparent white background to the form */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Style for bold column names */
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align: center;">Bank Personal Loan Prediction</h2>
+
+    <!-- Form for input values -->
+    <form action="/predicted_bank_loan" method="POST" style="text-align: center;">
+        <label for="Age"> <strong> Age: </strong> </label>
+        <input type="text" id="Age" name="Age" required><br>
+
+        <label for="Experience"> <strong> Experience: </strong> </label>
+        <input type="text" id="Experience" name="Experience" required><br>
+
+        <label for="Income"> <strong> Income: </strong> </label>
+        <input type="text" id="Income" name="Income" required><br>
+
+        <label for="Family"> <strong>Family: </strong> </label>
+        <input type="text" id="Family" name="Family" required><br>
+
+        <label for="CCAvg"> <strong>CCAvg:</strong> </label>
+        <input type="text" id="CCAvg" name="CCAvg" required><br>
+
+        <label for="Education"> <strong>Education:</strong> </label>
+        <input type="text" id="Education" name="Education" required><br>
+
+        <label for="Mortgage"> <strong>Mortgage:</strong> </label>
+        <input type="text" id="Mortgage" name="Mortgage" required><br>
+
+        <!-- <label for="Securities_Account"> <strong>Securities_Account: </strong> </label>
+        <input type="text" id="Securities_Account" name="Securities_Account" required><br> -->
+
+        <label for="Securities_Account">Securities_Account:</label>
+        <select id="Securities_Account" name="Securities_Account" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+<!-- 
+        <label for="CD_Account"> <strong>CD_Account:</strong> </label>
+        <input type="text" id="CD_Account" name="CD_Account" required><br> -->
+
+        <label for="CD_Account">CD_Account:</label>
+        <select id="CD_Account" name="CD_Account" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option> 
+<!-- 
+        <label for="Online"> <strong>Online:</strong> </label>
+        <input type="text" id="Online" name="Online" required><br> -->
+
+        <label for="Online">Online:</label>
+        <select id="Online" name="Online" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+            
+        <!-- <label for="CreditCard"> <strong>CreditCard : </strong> </label>
+        <input type="text" id="CreditCard" name="CreditCard" required><br> -->
+        
+        <label for="CreditCard">Credit Card:</label>
+        <select id="CreditCard" name="CreditCard" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </select>
+   
+
+
+        <button type="submit">Predict</button>
+    </form>
+    
+    <!-- Display predicted Loan Approval -->
+    {% if prediction_text %}
+        <h3 style="text-align: center;">Predicted Loan Approval: {{prediction_text}}</h3>
+    {% endif %}
+
+</body>
+</html>
+
+<!-- 45	19	34	90089	3	1.5	1	0	0	1	0	0	0
+39	15	11	94720	1	1	1	0	0	0	0	0	0
+35	9	100	94112	1	2.7	2	0	0	0	0	0	0
+35	8	45	91330	4	1	2	0	0	0	0	0	1 -->
