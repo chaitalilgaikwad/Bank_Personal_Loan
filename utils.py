@@ -4,7 +4,7 @@ import numpy as np
 import json
 
 def get_loan_approval(Age,Experience,Income,Family,CCAvg,Education,Mortgage,Securities_Account,CD_Account,Online,CreditCard):
-    model_f_path = r"E:\1. Velocity\Data Science practice\All_Model_Testing_Data\Final_Random_Forest\artifacts\Random_forest_Bank_Loan.pkl"
+    model_f_path = r"artifacts/Random_forest_Bank_Loan.pkl"
     with open(model_f_path,'rb') as ftr:
          rf_model= pickle.load(ftr)
     
