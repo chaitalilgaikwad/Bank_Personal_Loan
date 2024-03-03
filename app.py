@@ -39,5 +39,5 @@ def predicted_bank_loan():
                     'Result':f"Predicted Class for Bank Loan Approval is : Class{loan_result}"})
 
 if __name__ == "__main__":
-    #app.run(host = '0.0.0.0',port = 8080,debug = False)
-    app.run(debug = False)
+    app.run(host = '0.0.0.0',port = 5004,debug = False)
+    #app.run(debug = False)
